@@ -53,9 +53,26 @@ for j in open("Os01g.txt"):
        print(id,relation[id],sep="\t")
     else:
        print(id,"None",sep="\t")
+
+# 4 再加一个 RAP_ID → Uniprot
+relation={}
+for i in open("Uniprot_id.txt"):
+    locus=str(i.split()[0])
+    id=str(i.split()[1])
+    relation[locus]=id
+for j in open("Os01g.txt"):
+    id = j.strip()
+    if id in relation.keys():
+       print(id,relation[id],sep="\t")
+    else:
+       print(id,"None",sep="\t")
+
  
  # 这里有2个问题，就是 
- 1：locus=str(i.split("\t")[0]) 必须加"\t",因为不加就会出现“IndexError: list index out of range” 说索引越界了；
- 2：id=str(i.split("\t")[1].strip() 必须加strip()否则结果就是一行之后都有一个空行
+#  1：locus=str(i.split("\t")[0]) 必须加"\t",因为不加就会出现“IndexError: list index out of range” 说索引越界了；
+#  2：id=str(i.split("\t")[1].strip() 必须加strip()否则结果就是一行之后都有一个空行
+#  关键的是并没有找到原因。
+  
+          
+          
  
- 关键的是并没有找到原因。
